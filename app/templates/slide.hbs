@@ -1,0 +1,26 @@
+<div class="ui-page-content">
+  <h1>{{slide.title}}</h1>
+  <h2>{{slide.subtitle}}</h2>
+
+  {{#if slide.image}}
+    <img src={{slide.image}}/>
+  {{/if}}
+
+  <ul class="ui-slide-list">
+    {{#each slide.listItems as |item|}}<li>{{item}}</li>{{/each}}
+  </ul>
+
+  {{#if slide.code}}
+    <pre>{{slide.code}}</pre>
+  {{/if}}
+</div>
+
+{{#if prevSlide}}
+  {{#link-to 'slide' prevSlide}}prev{{/link-to}}
+{{else}}
+  {{#link-to 'index'}}prev{{/link-to}}
+{{/if}}
+
+{{#if nextSlide}}
+  {{#link-to 'slide' nextSlide class=(if nextSlide 'ui-next-link' 'ui-next-link ui-invisible')}}next{{/link-to}}
+{{/if}}
